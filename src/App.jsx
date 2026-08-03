@@ -2580,19 +2580,26 @@ function SeccionFichaje({ darkMode, fichajes, fichajeActivo, ficharEntrada, fich
   );
 }
 
-function SeccionPerfil({ darkMode, usuarioId, usuario, pins, setPins, empColor, EMPRESAS }) {
+function SeccionPerfil({ darkMode, usuarioId, usuario, pins, onCambiarPin, empColor, EMPRESAS }) {
   const [pinActual,  setPinActual]  = useState("");
   const [pinNuevo,   setPinNuevo]   = useState("");
   const [pinConfirm, setPinConfirm] = useState("");
   const [msgPin,     setMsgPin]     = useState(null);
+  const [guardando,  setGuardando]  = useState(false);
 
   const guardarPin = () => {
     if (pins[usuarioId] !== pinActual)         { setMsgPin({ ok:false, txt:"El PIN actual no es correcto." }); return; }
     if (pinNuevo.length !== 4 || !/^\d+$/.test(pinNuevo)) { setMsgPin({ ok:false, txt:"El nuevo PIN debe tener 4 dígitos." }); return; }
     if (pinNuevo !== pinConfirm)               { setMsgPin({ ok:false, txt:"Los PINs no coinciden." }); return; }
-    setPins(p => ({ ...p, [usuarioId]: pinNuevo }));
-    setMsgPin({ ok:true, txt:"✅ PIN actualizado correctamente." });
-    setPinActual(""); setPinNuevo(""); setPinConfirm("");
+    if (pinNuevo === pinActual)                { setMsgPin({ ok:false, txt:"El nuevo PIN debe ser distinto al actual." }); return; }
+    setGuardando(true);
+    onCambiarPin(usuarioId, pinNuevo)
+      .then(() => {
+        setMsgPin({ ok:true, txt:"✅ PIN actualizado. Ya puedes usarlo para entrar desde cualquier dispositivo o navegador." });
+        setPinActual(""); setPinNuevo(""); setPinConfirm("");
+      })
+      .catch(() => setMsgPin({ ok:false, txt:"No se pudo guardar el PIN. Revisa tu conexión e inténtalo de nuevo." }))
+      .finally(() => setGuardando(false));
   };
 
   const inp2 = { width:"100%", padding:"9px 12px", background: darkMode?"#1A2235":"#F8FAFC", border:`1px solid ${darkMode?"#2E3A55":"#CBD5E1"}`, borderRadius:8, color: darkMode?"#E2E8F0":"#0F172A", fontSize:13, fontFamily:"inherit", boxSizing:"border-box" };
@@ -2631,7 +2638,7 @@ function SeccionPerfil({ darkMode, usuarioId, usuario, pins, setPins, empColor, 
           <div><label style={lb}>Nuevo PIN (4 dígitos)</label><input type="password" maxLength={4} style={inp2} value={pinNuevo} onChange={e=>setPinNuevo(e.target.value)} placeholder="••••" /></div>
           <div><label style={lb}>Confirmar nuevo PIN</label><input type="password" maxLength={4} style={inp2} value={pinConfirm} onChange={e=>setPinConfirm(e.target.value)} placeholder="••••" /></div>
           {msgPin && <p style={{ margin:0, color: msgPin.ok?"#38A169":"#E53E3E", fontSize:12, fontWeight:700 }}>{msgPin.txt}</p>}
-          <button onClick={guardarPin} style={{ background: empColor, border:"none", borderRadius:8, padding:"10px", color:"#fff", fontSize:13, fontWeight:700, cursor:"pointer", fontFamily:"inherit" }}>Guardar PIN</button>
+          <button onClick={guardarPin} disabled={guardando} style={{ background: empColor, border:"none", borderRadius:8, padding:"10px", color:"#fff", fontSize:13, fontWeight:700, cursor: guardando ? "default" : "pointer", opacity: guardando ? 0.6 : 1, fontFamily:"inherit" }}>{guardando ? "Guardando…" : "Guardar PIN"}</button>
         </div>
       </div>
     </div>
@@ -2729,7 +2736,18 @@ export default function App() {
   const [usuarioId,     setUsuarioId]  = useState(() => {
     try { const id = sessionStorage.getItem("grupo_usuario_id"); return id ? Number(id) : null; } catch { return null; }
   });
-  const [pins,          setPins]       = useState({...PINS_DEFAULT});
+  // Los PIN que el usuario cambia se guardan en Firestore (colección "pins")
+  // para que el cambio se aplique en cualquier dispositivo/navegador donde
+  // inicie sesión, no solo en el que lo cambió.
+  const [pinsCambiados, setPinsCambiados] = useState({}); // { userId: "nuevoPin" } — override sobre PINS_DEFAULT
+  useEffect(() => {
+    const unsub = onSnapshot(collection(db, "pins"), snap => {
+      const m = {};
+      snap.docs.forEach(d => { m[Number(d.id)] = d.data().pin; });
+      setPinsCambiados(m);
+    }, () => {});
+    return () => unsub();
+  }, []);
   const [loginUsuarioId, setLoginUsuarioId] = useState("");
   const [loginPin,       setLoginPin]       = useState("");
   const [loginError,     setLoginError]     = useState("");
@@ -2871,9 +2889,17 @@ export default function App() {
     final.forEach(u => { u.activo = (String(u.id) in estadoMap) ? estadoMap[String(u.id)] !== false : true; });
     USUARIOS.length = 0;
     USUARIOS.push(...final);
-    if (Object.keys(pinsNuevos).length) setPins(p => ({ ...p, ...pinsNuevos }));
     setUsuariosVer(v => v + 1);
   }, [estadoMap, nuevosMap]);
+
+  // PIN efectivo de cada usuario: el que haya guardado en Firestore (pinsCambiados)
+  // tiene prioridad; si nunca lo cambió, sigue siendo el PIN inicial (1234, o el
+  // asignado al crear el usuario).
+  const pins = { ...PINS_DEFAULT, ...pinsCambiados };
+
+  // Cambiar el PIN propio: se guarda en Firestore, así vale para cualquier dispositivo/navegador
+  const cambiarPin = (uid, nuevoPin) =>
+    setDoc(doc(db, "pins", String(uid)), { pin: nuevoPin, actualizado: new Date().toISOString() });
 
   // ── Mis vacaciones aprobadas (para reflejarlas en el fichaje) ──
   const [misVacaciones, setMisVacaciones] = useState([]);
@@ -3981,7 +4007,7 @@ export default function App() {
         )}
 
         {/* ── PERFIL ── */}
-        {seccion === "perfil" && can("perfil") && <SeccionPerfil darkMode={darkMode} usuarioId={usuarioId} usuario={usuario} pins={pins} setPins={setPins} empColor={empColor} EMPRESAS={EMPRESAS} />}
+        {seccion === "perfil" && can("perfil") && <SeccionPerfil darkMode={darkMode} usuarioId={usuarioId} usuario={usuario} pins={pins} onCambiarPin={cambiarPin} empColor={empColor} EMPRESAS={EMPRESAS} />}
 
       </div>{/* /contenido secciones */}
       </div>{/* /contenido principal */}
