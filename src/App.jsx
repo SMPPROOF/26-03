@@ -46,58 +46,58 @@ const EMPRESAS = [
 
 const USUARIOS = [
   // ── Independiente ──────────────────────────────────────────────
-  { id: 0,  nombre: "Miguel Manzano Otero",      empresaId: 0, rol: "director"      },  // Director General
-  { id: 1,  nombre: "Eugenio Manzano Otero",     empresaId: 0, rol: "ceo"           },  // CEO
-  { id: 2,  nombre: "Jesús Salazar Otero",       empresaId: 0, rol: "trabajador"    },
-  { id: 3,  nombre: "Iratxe Plaza Castaño",      empresaId: 0, rol: "trabajador"    },
-  { id: 4,  nombre: "Yolanda Jiménez Núñez",     empresaId: 0, rol: "trabajador"    },
-  { id: 5,  nombre: "Laura Hernández Hoyos",     empresaId: 0, rol: "trabajador"    },
-  { id: 6,  nombre: "Rosa Garrido Marroquí",     empresaId: 0, rol: "trabajador"    },
-  { id: 7,  nombre: "Fernando Flores Manzano",   empresaId: 0, rol: "trabajador"    },
+  { id: 0,  nombre: "Miguel Manzano Otero", email: "mmanzano@lauraotero.com",      empresaId: 0, rol: "director"      },  // Director General
+  { id: 1,  nombre: "Eugenio Manzano Otero", email: "emanzano@lauraotero.com",     empresaId: 0, rol: "ceo"           },  // CEO
+  { id: 2,  nombre: "Jesús Salazar Otero", email: "jesussalazar@lauraotero.com",       empresaId: 0, rol: "trabajador"    },
+  { id: 3,  nombre: "Iratxe Plaza Castaño", email: "iplaza@lauraotero.com",      empresaId: 0, rol: "trabajador"    },
+  { id: 4,  nombre: "Yolanda Jiménez Núñez", email: "yolanda@lauraotero.com",     empresaId: 0, rol: "trabajador"    },
+  { id: 5,  nombre: "Laura Hernández Hoyos", email: "laurahernandez@lauraotero.com",     empresaId: 0, rol: "trabajador"    },
+  { id: 6,  nombre: "Rosa Garrido Marroquí", email: "rosayary@gmail.com",     empresaId: 0, rol: "trabajador"    },
+  { id: 7,  nombre: "Fernando Flores Manzano", email: "f.floresmanzano@lauraotero.com",   empresaId: 0, rol: "trabajador"    },
   // ── Energía de Miajadas ────────────────────────────────────────
-  { id: 8,  nombre: "Ángel Fernández Mogollón",  empresaId: 1, rol: "encargado"     },
-  { id: 9,  nombre: "Jose Manuel Fuentes Vicente",empresaId: 1, rol: "trabajador"   },
-  { id: 10, nombre: "María Manzano Soria",        empresaId: 1, rol: "trabajador"   },
+  { id: 8,  nombre: "Ángel Fernández Mogollón", email: "angelfernandez@lauraotero.com",  empresaId: 1, rol: "encargado"     },
+  { id: 9,  nombre: "Jose Manuel Fuentes Vicente", email: "jmfuentes@lauraotero.com",empresaId: 1, rol: "trabajador"   },
+  { id: 10, nombre: "María Manzano Soria", email: "mariamanzano@lauraotero.com",        empresaId: 1, rol: "trabajador"   },
   // ── Miajadas Telecom ───────────────────────────────────────────
-  { id: 11, nombre: "Valentín Pérez Sánchez",    empresaId: 2, rol: "encargado"     },
-  { id: 12, nombre: "Esther Albalá Fabián",      empresaId: 2, rol: "encargado"     },
-  { id: 13, nombre: "Aitor Segador Garrido",     empresaId: 2, rol: "trabajador"    },
-  { id: 14, nombre: "Carlos Cintero Díaz",       empresaId: 2, rol: "trabajador"    },
-  { id: 15, nombre: "Javier Acedo Iñigo",        empresaId: 2, rol: "trabajador"    },
-  { id: 16, nombre: "Sara Márquez Pérez",        empresaId: 2, rol: "administrador" },
+  { id: 11, nombre: "Valentín Pérez Sánchez", email: "valentinperez@lauraotero.com",    empresaId: 2, rol: "encargado"     },
+  { id: 12, nombre: "Esther Albalá Fabián", email: "ealbalaf@lauraotero.com",      empresaId: 2, rol: "encargado"     },
+  { id: 13, nombre: "Aitor Segador Garrido", email: "aitorsegador@lauraotero.com",     empresaId: 2, rol: "trabajador"    },
+  { id: 14, nombre: "Carlos Cintero Díaz", email: "carloscintero@lauraotero.com",       empresaId: 2, rol: "trabajador"    },
+  { id: 15, nombre: "Javier Acedo Iñigo", email: "javieracedo@lauraotero.com",        empresaId: 2, rol: "trabajador"    },
+  { id: 16, nombre: "Sara Márquez Pérez", email: "smarquez@lauraotero.com",        empresaId: 2, rol: "administrador" },
   // ── Laura Otero Instalaciones ──────────────────────────────────
-  { id: 17, nombre: "Miguel Calvo Calvo",        empresaId: 3, rol: "encargado"     },
-  { id: 18, nombre: "Juan Antonio Fuentes Vicente",empresaId: 3, rol: "trabajador"  },
-  { id: 19, nombre: "Jaime Naranjo Sanguino",    empresaId: 3, rol: "trabajador"    },
-  { id: 20, nombre: "Pepe Saavedra Pizarro",     empresaId: 3, rol: "trabajador"    },
-  { id: 21, nombre: "Ekaitz Pereira Grande",     empresaId: 3, rol: "trabajador"    },
-  { id: 22, nombre: "Charly Llanos Lorenzo",     empresaId: 3, rol: "trabajador"    },
-  { id: 23, nombre: "Borja Llanos López",        empresaId: 3, rol: "trabajador"    },
-  { id: 24, nombre: "Oscar García Godino",       empresaId: 3, rol: "trabajador"    },
-  { id: 25, nombre: "Carlos Pablo Pajuelo",      empresaId: 3, rol: "trabajador"    },
-  { id: 26, nombre: "David López Babiano",       empresaId: 3, rol: "trabajador"    },
-  { id: 27, nombre: "Manuel Lobo Meneses",       empresaId: 3, rol: "trabajador"    },
-  { id: 28, nombre: "Luis Collado Pizarro",      empresaId: 3, rol: "trabajador"    },
-  { id: 29, nombre: "Félix Loro García",         empresaId: 3, rol: "trabajador"    },
-  { id: 30, nombre: "Andrés Medina Nieto",       empresaId: 3, rol: "trabajador"    },
-  { id: 31, nombre: "Jairo Miguel Masa",         empresaId: 3, rol: "trabajador"    },
-  { id: 32, nombre: "Francisco Babiano Ruiz",    empresaId: 3, rol: "trabajador"    },
-  { id: 33, nombre: "Antonio Díaz Álvarez",      empresaId: 3, rol: "trabajador"    },
-  { id: 34, nombre: "Guillermo Méndez Cortés",   empresaId: 3, rol: "trabajador"    },
+  { id: 17, nombre: "Miguel Calvo Calvo", email: "miguelcalvo@lauraotero.com",        empresaId: 3, rol: "encargado"     },
+  { id: 18, nombre: "Juan Antonio Fuentes Vicente", email: "jafuentes@lauraotero.com",empresaId: 3, rol: "trabajador"  },
+  { id: 19, nombre: "Jaime Naranjo Sanguino", email: "jaimenaranjo@lauraotero.com",    empresaId: 3, rol: "trabajador"    },
+  { id: 20, nombre: "Pepe Saavedra Pizarro", email: "joseluissaavedrapizarro@gmail.com",     empresaId: 3, rol: "trabajador"    },
+  { id: 21, nombre: "Ekaitz Pereira Grande", email: "ekaitzpg@gmail.com",     empresaId: 3, rol: "trabajador"    },
+  { id: 22, nombre: "Charly Llanos Lorenzo", email: "charlyllanos04@hotmail.com",     empresaId: 3, rol: "trabajador"    },
+  { id: 23, nombre: "Borja Llanos López", email: "borja_llanos26@hotmail.com",        empresaId: 3, rol: "trabajador"    },
+  { id: 24, nombre: "Oscar García Godino", email: "garciagodinooscar@gmail.com",       empresaId: 3, rol: "trabajador"    },
+  { id: 25, nombre: "Carlos Pablo Pajuelo", email: "carlospaju99@gmail.com",      empresaId: 3, rol: "trabajador"    },
+  { id: 26, nombre: "David López Babiano", email: "david.lopezbabiano@hotmail.com",       empresaId: 3, rol: "trabajador"    },
+  { id: 27, nombre: "Manuel Lobo Meneses", email: "manolobo1963@gmail.com",       empresaId: 3, rol: "trabajador"    },
+  { id: 28, nombre: "Luis Collado Pizarro", email: "uisete260790@hotmail.com",      empresaId: 3, rol: "trabajador"    },
+  { id: 29, nombre: "Félix Loro García", email: "felisucolg@gmail.com",         empresaId: 3, rol: "trabajador"    },
+  { id: 30, nombre: "Andrés Medina Nieto", email: "andresmedinanieto18@gmail.com",       empresaId: 3, rol: "trabajador"    },
+  { id: 31, nombre: "Jairo Miguel Masa", email: "jairomiguelmasa@gmail.com",         empresaId: 3, rol: "trabajador"    },
+  { id: 32, nombre: "Francisco Babiano Ruiz", email: "fbabiano@lauraotero.com",    empresaId: 3, rol: "trabajador"    },
+  { id: 33, nombre: "Antonio Díaz Álvarez", email: "antoniodiaza6@icloud.com",      empresaId: 3, rol: "trabajador"    },
+  { id: 34, nombre: "Guillermo Méndez Cortés", email: "guille.mendez.cortes@gmail.com",   empresaId: 3, rol: "trabajador"    },
   // ── Zaqaru ────────────────────────────────────────────────────
-  { id: 35, nombre: "Riánsares Mañoso Blázquez", empresaId: 4, rol: "encargado"     },
-  { id: 36, nombre: "Alberto Masa Mayoral",      empresaId: 4, rol: "trabajador"    },
-  { id: 37, nombre: "Alberto Solís Loro",        empresaId: 4, rol: "trabajador"    },
-  { id: 38, nombre: "Antonio Vellarino Garrido", empresaId: 4, rol: "trabajador"    },
-  { id: 39, nombre: "Francisco Sánchez Melero",  empresaId: 4, rol: "trabajador"    },
-  { id: 40, nombre: "Jorge Martínez Orellana",   empresaId: 4, rol: "trabajador"    },
-  { id: 41, nombre: "Pedro Solís Bernardo",      empresaId: 4, rol: "trabajador"    },
+  { id: 35, nombre: "Riánsares Mañoso Blázquez", email: "rian@lauraotero.com", empresaId: 4, rol: "encargado"     },
+  { id: 36, nombre: "Alberto Masa Mayoral", email: "albertuxo9@gmail.com",      empresaId: 4, rol: "trabajador"    },
+  { id: 37, nombre: "Alberto Solís Loro", email: "albertosolisloro27@gmail.com",        empresaId: 4, rol: "trabajador"    },
+  { id: 38, nombre: "Antonio Vellarino Garrido", email: "antonio_vellarino@hotmail.com", empresaId: 4, rol: "trabajador"    },
+  { id: 39, nombre: "Francisco Sánchez Melero", email: "franciscosanchezmelero5@gmail.com",  empresaId: 4, rol: "trabajador"    },
+  { id: 40, nombre: "Jorge Martínez Orellana", email: "martinezorellanajorge5@gmail.com",   empresaId: 4, rol: "trabajador"    },
+  { id: 41, nombre: "Pedro Solís Bernardo", email: "psolisbernardo1968@gmail.com",      empresaId: 4, rol: "trabajador"    },
   // ── Laura Otero S.A. ──────────────────────────────────────────
-  { id: 42, nombre: "Jose Antonio Viegas Sánchez",empresaId: 5, rol: "encargado"   },
-  { id: 43, nombre: "Vicente Manzano Otero",     empresaId: 5, rol: "trabajador"    },
-  { id: 44, nombre: "Belén García Bravo",        empresaId: 5, rol: "trabajador"    },
-  { id: 45, nombre: "Antonio Vellarino Maeso",   empresaId: 5, rol: "trabajador"    },
-  { id: 46, nombre: "Daniel Pizarro Pizarro",    empresaId: 5, rol: "rrhh"          },
+  { id: 42, nombre: "Jose Antonio Viegas Sánchez", email: "futuro61@hotmail.com",empresaId: 5, rol: "encargado"   },
+  { id: 43, nombre: "Vicente Manzano Otero", email: "vmanzano@lauraotero.com",     empresaId: 5, rol: "trabajador"    },
+  { id: 44, nombre: "Belén García Bravo", email: "belengarcia@lauraotero.com",        empresaId: 5, rol: "trabajador"    },
+  { id: 45, nombre: "Antonio Vellarino Maeso", email: "antoniovellarino@lauraotero.com",   empresaId: 5, rol: "trabajador"    },
+  { id: 46, nombre: "Daniel Pizarro Pizarro", email: "danielpizarro@lauraotero.com",    empresaId: 5, rol: "rrhh"          },
 ];
 // Copia base de los usuarios del código (los 47 originales), para reconstruir
 // USUARIOS = base + usuarios nuevos (Firestore) sin perder identidad.
@@ -2750,7 +2750,9 @@ export default function App() {
   });
   // Los PIN que el usuario cambia se guardan en Firestore (colección "pins")
   // para que el cambio se aplique en cualquier dispositivo/navegador donde
-  // inicie sesión, no solo en el que lo cambió.
+  // inicie sesión, no solo en el que lo cambió. Si un usuario NO tiene entrada
+  // en esta colección, significa que sigue con el PIN por defecto (1234) y
+  // aún no ha pasado por el cambio obligatorio del primer acceso.
   const [pinsCambiados, setPinsCambiados] = useState({}); // { userId: "nuevoPin" } — override sobre PINS_DEFAULT
   useEffect(() => {
     const unsub = onSnapshot(collection(db, "pins"), snap => {
@@ -2894,7 +2896,7 @@ export default function App() {
     const pinsNuevos = {};
     Object.values(nuevosMap).forEach(nv => {
       if (!final.some(u => u.id === nv.id)) {
-        final.push({ id: nv.id, nombre: nv.nombre, empresaId: Number(nv.empresaId), rol: nv.rol || "trabajador" });
+        final.push({ id: nv.id, nombre: nv.nombre, empresaId: Number(nv.empresaId), rol: nv.rol || "trabajador", email: nv.email || "" });
         if (nv.pin) { PINS_DEFAULT[nv.id] = nv.pin; pinsNuevos[nv.id] = nv.pin; }
       }
     });
@@ -2906,7 +2908,8 @@ export default function App() {
 
   // PIN efectivo de cada usuario: el que haya guardado en Firestore (pinsCambiados)
   // tiene prioridad; si nunca lo cambió, sigue siendo el PIN inicial (1234, o el
-  // asignado al crear el usuario).
+  // asignado al crear el usuario). Que un usuario NO tenga entrada en pinsCambiados
+  // es justo la señal que usamos para forzar el cambio en el primer acceso.
   const pins = { ...PINS_DEFAULT, ...pinsCambiados };
 
   // Cambiar el PIN propio: se guarda en Firestore, así vale para cualquier dispositivo/navegador
@@ -3310,6 +3313,27 @@ export default function App() {
     try { sessionStorage.removeItem("grupo_logueado"); sessionStorage.removeItem("grupo_usuario_id"); } catch {}
   };
 
+  // Un usuario que todavía no ha cambiado nunca su PIN (sigue con el 1234 por
+  // defecto, es decir, no tiene entrada propia en "pins") está obligado a
+  // elegir uno nuevo antes de poder usar la app. Así nos aseguramos de que
+  // nadie se queda para siempre con el PIN genérico, adivinable por cualquiera.
+  const debeCambiarPin = logueado && usuarioId != null && pinsCambiados[usuarioId] === undefined;
+  const [pinNuevoInicial,   setPinNuevoInicial]   = useState("");
+  const [pinConfirmInicial, setPinConfirmInicial] = useState("");
+  const [errorPinInicial,   setErrorPinInicial]   = useState("");
+  const [guardandoPinInicial, setGuardandoPinInicial] = useState(false);
+  const confirmarPinInicial = () => {
+    setErrorPinInicial("");
+    if (pinNuevoInicial.length !== 4 || !/^\d+$/.test(pinNuevoInicial)) { setErrorPinInicial("El PIN debe tener 4 dígitos."); return; }
+    if (pinNuevoInicial === "1234")                                     { setErrorPinInicial("Elige un PIN distinto al 1234 por defecto."); return; }
+    if (pinNuevoInicial !== pinConfirmInicial)                          { setErrorPinInicial("Los PIN no coinciden."); return; }
+    setGuardandoPinInicial(true);
+    cambiarPin(usuarioId, pinNuevoInicial)
+      .then(() => { setPinNuevoInicial(""); setPinConfirmInicial(""); })
+      .catch(() => setErrorPinInicial("No se pudo guardar el PIN. Revisa tu conexión e inténtalo de nuevo."))
+      .finally(() => setGuardandoPinInicial(false));
+  };
+
   // ── PANTALLA LOGIN ──
   if (!logueado || usuarioId === null || !usuario) {
     return (
@@ -3353,6 +3377,42 @@ export default function App() {
             </button>
           </div>
           <p style={{ textAlign: "center", color: darkMode ? "#334155" : "#94A3B8", fontSize: 11, marginTop: 20, marginBottom: 0 }}>PIN por defecto: 1234</p>
+        </div>
+      </div>
+    );
+  }
+
+  // ── PANTALLA OBLIGATORIA: cambiar el PIN por defecto en el primer acceso ──
+  if (debeCambiarPin) {
+    return (
+      <div style={{ minHeight: "100vh", background: darkMode ? "#0A0F1C" : "#F1F5F9", fontFamily: "'DM Sans','Segoe UI',sans-serif", display: "flex", alignItems: "center", justifyContent: "center", padding: "16px" }}>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+        <div style={{ background: darkMode ? "#111827" : "#FFFFFF", border: `1px solid ${darkMode ? "#1E293B" : "#E2E8F0"}`, borderRadius: 16, padding: 36, width: "100%", maxWidth: 380, boxShadow: "0 24px 80px #0008" }}>
+          <h2 style={{ margin: "0 0 6px", color: darkMode ? "#E2E8F0" : "#0F172A", fontSize: 18, fontWeight: 800 }}>🔒 Elige tu PIN</h2>
+          <p style={{ margin: "0 0 24px", color: darkMode ? "#475569" : "#64748B", fontSize: 13 }}>
+            Es tu primer acceso, {usuario?.nombre}. Por seguridad, tienes que cambiar el PIN por defecto (1234) por uno propio antes de continuar.
+          </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+            <div>
+              <label style={{ color: darkMode ? "#64748B" : "#475569", fontSize: 11, fontWeight: 700, textTransform: "uppercase", display: "block", marginBottom: 6 }}>Nuevo PIN (4 dígitos)</label>
+              <input type="password" maxLength={4} inputMode="numeric"
+                style={{ width: "100%", boxSizing: "border-box", fontFamily: "inherit", fontSize: 20, letterSpacing: 8, textAlign: "center", background: darkMode ? "#0D1424" : "#FFFFFF", border: `1px solid ${darkMode ? "#1E293B" : "#E2E8F0"}`, borderRadius: 8, padding: "10px 12px", color: darkMode ? "#E2E8F0" : "#0F172A", outline: "none" }}
+                value={pinNuevoInicial} onChange={e => { setPinNuevoInicial(e.target.value.replace(/\D/,"")); setErrorPinInicial(""); }} placeholder="• • • •" />
+            </div>
+            <div>
+              <label style={{ color: darkMode ? "#64748B" : "#475569", fontSize: 11, fontWeight: 700, textTransform: "uppercase", display: "block", marginBottom: 6 }}>Confirmar PIN</label>
+              <input type="password" maxLength={4} inputMode="numeric"
+                style={{ width: "100%", boxSizing: "border-box", fontFamily: "inherit", fontSize: 20, letterSpacing: 8, textAlign: "center", background: darkMode ? "#0D1424" : "#FFFFFF", border: `1px solid ${errorPinInicial ? "#E53E3E" : darkMode ? "#1E293B" : "#E2E8F0"}`, borderRadius: 8, padding: "10px 12px", color: darkMode ? "#E2E8F0" : "#0F172A", outline: "none" }}
+                value={pinConfirmInicial} onChange={e => { setPinConfirmInicial(e.target.value.replace(/\D/,"")); setErrorPinInicial(""); }}
+                onKeyDown={e => e.key === "Enter" && confirmarPinInicial()} placeholder="• • • •" />
+              {errorPinInicial && <p style={{ margin: "6px 0 0", color: "#E53E3E", fontSize: 12 }}>{errorPinInicial}</p>}
+            </div>
+            <button onClick={confirmarPinInicial} disabled={guardandoPinInicial}
+              style={{ fontFamily: "inherit", fontWeight: 800, fontSize: 14, background: "#3182CE", color: "#fff", border: "none", borderRadius: 8, padding: "12px", cursor: guardandoPinInicial ? "default" : "pointer", opacity: guardandoPinInicial ? 0.7 : 1, marginTop: 4 }}>
+              {guardandoPinInicial ? "Guardando…" : "Guardar y continuar"}
+            </button>
+            <button onClick={handleLogout} style={{ fontFamily: "inherit", fontSize: 12, background: "transparent", color: darkMode ? "#64748B" : "#94A3B8", border: "none", cursor: "pointer" }}>Cerrar sesión</button>
+          </div>
         </div>
       </div>
     );
