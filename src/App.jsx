@@ -2038,6 +2038,20 @@ function ModalAdministracion({ onClose }) {
     try { await setDoc(doc(db, "estadoUsuarios", String(id)), { activo: nuevoActivo }); } catch {}
   };
 
+  // Restablecer el PIN de cualquier usuario a 1234. Al borrar su entrada en
+  // Firestore ("pins"), la próxima vez que entre la app le obligará a elegir
+  // uno nuevo (el mismo mecanismo del primer acceso).
+  const [avisoPinReset, setAvisoPinReset] = useState("");
+  const restablecerPin = async (u) => {
+    if (!window.confirm(`¿Restablecer el PIN de ${u.nombre} a 1234? Tendrá que elegir uno nuevo la próxima vez que entre.`)) return;
+    try {
+      await deleteDoc(doc(db, "pins", String(u.id)));
+      setAvisoPinReset(`✅ PIN de ${u.nombre} restablecido a 1234.`);
+    } catch {
+      setAvisoPinReset(`❌ No se pudo restablecer el PIN de ${u.nombre}. Inténtalo de nuevo.`);
+    }
+  };
+
   const eliminarUsuario = (id) => {
     if (!window.confirm("¿Eliminar este usuario?")) return;
     const nuevos = usuarios.filter(u => u.id !== id);
@@ -2211,6 +2225,12 @@ function ModalAdministracion({ onClose }) {
                 </div>
               )}
 
+              {avisoPinReset && (
+                <div style={{ background:"#3182CE22", border:"1px solid #3182CE55", borderRadius:10, padding:"10px 14px", marginBottom:16 }}>
+                  <p style={{ margin:0, color:"#93C5FD", fontSize:12 }}>{avisoPinReset}</p>
+                </div>
+              )}
+
               <div style={{ display:"flex", flexDirection:"column", gap:6 }}>
                 {usuarios.map(u => {
                   const emp = empresas.find(e => e.id === u.empresaId);
@@ -2222,6 +2242,7 @@ function ModalAdministracion({ onClose }) {
                         <p style={{ margin:0, color: activo ? "#E2E8F0" : "#64748B", fontSize:13, fontWeight:600, whiteSpace:"nowrap", overflow:"hidden", textOverflow:"ellipsis" }}>{u.nombre}</p>
                         <p style={{ margin:0, color:"#475569", fontSize:11 }}>{emp?.nombre} · <span style={{ color: u.rol === "director" ? "#F6AD55" : u.rol === "administrador" ? "#805AD5" : u.rol === "encargado" ? "#3182CE" : "#475569" }}>{u.rol}</span></p>
                       </div>
+                      <button onClick={() => restablecerPin(u)} title="Restablecer PIN a 1234" style={{ ...btnSec, padding:"4px 9px", fontSize:10 }}>🔁 PIN</button>
                       <button onClick={() => toggleActivo(u.id)} style={{ ...btnSec, padding:"4px 9px", fontSize:10 }}>{activo ? "🟢 Activo" : "🔴 Inactivo"}</button>
                       <button onClick={() => setFormUser({ ...u })} style={{ ...btnSec, padding:"5px 10px", fontSize:11 }}>✏️</button>
                       {u.id !== 0 && <button onClick={() => eliminarUsuario(u.id)} style={btnDel}>🗑️</button>}
