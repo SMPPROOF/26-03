@@ -6,6 +6,7 @@ let __darkMode = getDM();
 let darkMode = __darkMode;
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, onSnapshot, updateDoc, doc, setDoc, deleteDoc } from "firebase/firestore";
+import { getAuth, onAuthStateChanged, signInAnonymously } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAdfYXNZBGHHCbgCIsobZoIdFPLVtAIcB0",
@@ -17,6 +18,17 @@ const firebaseConfig = {
 };
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
+
+// ── Autenticación anónima ──
+// No sustituye al login por PIN (el usuario sigue entrando igual que siempre);
+// es una identidad técnica e invisible que exige Firebase para poder leer/escribir
+// en Firestore. Así las reglas de seguridad pueden negar el acceso a cualquiera
+// que no pase por esta app (por ejemplo, alguien que llame directamente a la API
+// con la apiKey, que siempre es pública).
+const auth = getAuth(firebaseApp);
+onAuthStateChanged(auth, (user) => {
+  if (!user) signInAnonymously(auth).catch(err => console.error("Error de autenticación anónima:", err));
+});
 
 // ── Logo Grulla (icono grulla + logotipo completo, blanco sobre transparente) ──
 const LOGO_GRULLA_ICON = "data:image/png;base64,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";
