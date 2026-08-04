@@ -19,6 +19,13 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 
+// Límite prudente para archivos guardados dentro de un documento de
+// Firestore como texto base64 (el propio Firestore tiene un tope de 1MB
+// por documento; dejamos margen para que quepan también el resto de
+// campos del documento). Cuando la app se mueva a un servidor propio,
+// este límite deja de ser necesario.
+const MAX_ARCHIVO_BYTES = 700 * 1024; // 700 KB
+
 // ── Autenticación anónima ──
 // No sustituye al login por PIN (el usuario sigue entrando igual que siempre);
 // es una identidad técnica e invisible que exige Firebase para poder leer/escribir
@@ -314,6 +321,7 @@ function ModalCrearTicket({ usuarioActual, onClose, onCrear }) {
 
   const handleImagenes = (e) => {
     Array.from(e.target.files).forEach(f => {
+      if (f.size > MAX_ARCHIVO_BYTES) { alert(`"${f.name}" pesa demasiado (máx. 700 KB por archivo).`); return; }
       const r = new FileReader();
       r.onload = ev => setImagenes(prev => [...prev, { nombre: f.name, dataUrl: ev.target.result }]);
       r.readAsDataURL(f);
@@ -705,6 +713,7 @@ function ModalDetalle({ ticket, usuarioActual, onClose, onActualizar, onBorrar }
 
   const handleAdjuntos = (e) => {
     Array.from(e.target.files).forEach(f => {
+      if (f.size > MAX_ARCHIVO_BYTES) { alert(`"${f.name}" pesa demasiado (máx. 700 KB por archivo).`); return; }
       const r = new FileReader();
       r.onload = ev => setAdjuntos(prev => [...prev, { nombre: f.name, dataUrl: ev.target.result, tipo: f.type }]);
       r.readAsDataURL(f);
@@ -2357,7 +2366,7 @@ function ModalComunicado({ darkMode, usuarioId, empresaId, onClose, comunicadoIn
     const file = e.target.files[0];
     if (!file) return;
     if (file.type !== "application/pdf") { alert("Solo se permiten archivos PDF."); return; }
-    if (file.size > 5 * 1024 * 1024)    { alert("El archivo no puede superar los 5 MB."); return; }
+    if (file.size > MAX_ARCHIVO_BYTES)  { alert("El archivo no puede superar los 700 KB."); return; }
     setCargandoPDF(true);
     const r = new FileReader();
     r.onload  = () => { setAdjuntoPDF({ nombre: file.name, dataUrl: r.result }); setCargandoPDF(false); };
@@ -2690,7 +2699,7 @@ function ModalSubirNomina({ darkMode, onClose, onSubir, empColor }) {
     const f = e.target.files[0];
     if (!f) return;
     if (f.type !== "application/pdf") { alert("Solo se permiten archivos PDF."); return; }
-    if (f.size > 10 * 1024 * 1024)   { alert("El archivo no puede superar los 10 MB."); return; }
+    if (f.size > MAX_ARCHIVO_BYTES)  { alert("El archivo no puede superar los 700 KB."); return; }
     setCargando(true);
     const r = new FileReader();
     r.onload  = () => { setArchivo({ nombre: f.name, dataUrl: r.result }); setCargando(false); };
@@ -2799,6 +2808,11 @@ export default function App() {
   const toggleTheme = () => setDarkMode(d => {
     const next = !d;
     __darkMode = next;
+    // "inp" y "labelS" se calcularon una sola vez al cargar la página; los
+    // mutamos aquí mismo para que los formularios que los usan (crear ticket,
+    // comunicados, etc.) también cambien de color al alternar el tema.
+    Object.assign(inp, { background: next ? "#1A2235" : "#F8FAFC", border: `1px solid ${next ? "#2E3A55" : "#CBD5E1"}`, color: next ? "#E2E8F0" : "#0F172A" });
+    Object.assign(labelS, { color: next ? "#64748B" : "#475569" });
     try { localStorage.setItem("theme", next ? "dark" : "light"); } catch {}
     return next;
   });
@@ -4349,7 +4363,7 @@ function ModalNuevoComunicado({ darkMode, usuario, usuarioId, db, empColor, USUA
   const handlePDF = (e) => {
     const file = e.target.files[0];
     if (!file) return;
-    if (file.size > 5*1024*1024) { alert("El PDF no puede superar 5 MB"); return; }
+    if (file.size > MAX_ARCHIVO_BYTES) { alert("El PDF no puede superar los 700 KB."); return; }
     const reader = new FileReader();
     reader.onload = ev => setAdjuntoPDF({ nombre: file.name, dataUrl: ev.target.result });
     reader.readAsDataURL(file);
@@ -4933,6 +4947,7 @@ function ModalSubirNominaRRHH({ darkMode, db, USUARIOS, EMPRESAS, empColor, onCl
   const handleFile = e => {
     const f = e.target.files[0];
     if (!f) return;
+    if (f.size > MAX_ARCHIVO_BYTES) { alert("El archivo no puede superar los 700 KB."); return; }
     const reader = new FileReader();
     reader.onload = ev => setArchivo({ nombre: f.name, url: ev.target.result });
     reader.readAsDataURL(f);
