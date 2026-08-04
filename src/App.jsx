@@ -39,65 +39,65 @@ const EMPRESAS = [
   { id: 0, nombre: "Independiente",             color: "#6B7280", inicial: "IN" },
   { id: 1, nombre: "Energía de Miajadas",        color: "#cf142b", inicial: "EM" },
   { id: 2, nombre: "Miajadas Telecom",           color: "#e0ad12", inicial: "MT" },
-  { id: 3, nombre: "Laura Otero Instalaciones",  color: "#0077ab", inicial: "LOI" },
+  { id: 3, nombre: "Laura Otero Instalaciones",  color: "#0077ab", inicial: "LI" },
   { id: 4, nombre: "Zaqaru",                     color: "#af4a85", inicial: "ZQ" },
   { id: 5, nombre: "Laura Otero S.A.",           color: "#4F8C0d", inicial: "LO" },
 ];
 
 const USUARIOS = [
   // ── Independiente ──────────────────────────────────────────────
-  { id: 0,  nombre: "Miguel Manzano Otero", email: "mmanzano@lauraotero.com",      empresaId: 0, rol: "director"      },  // Director General
-  { id: 1,  nombre: "Eugenio Manzano Otero", email: "emanzano@lauraotero.com",     empresaId: 0, rol: "ceo"           },  // CEO
-  { id: 2,  nombre: "Jesús Salazar Otero", email: "jesussalazar@lauraotero.com",       empresaId: 0, rol: "trabajador"    },
-  { id: 3,  nombre: "Iratxe Plaza Castaño", email: "iplaza@lauraotero.com",      empresaId: 0, rol: "trabajador"    },
-  { id: 4,  nombre: "Yolanda Jiménez Núñez", email: "yolanda@lauraotero.com",     empresaId: 0, rol: "trabajador"    },
-  { id: 5,  nombre: "Laura Hernández Hoyos", email: "laurahernandez@lauraotero.com",     empresaId: 0, rol: "trabajador"    },
-  { id: 6,  nombre: "Rosa Garrido Marroquí", email: "rosayary@gmail.com",     empresaId: 0, rol: "trabajador"    },
-  { id: 7,  nombre: "Fernando Flores Manzano", email: "f.floresmanzano@lauraotero.com",   empresaId: 0, rol: "trabajador"    },
+  { id: 0,  nombre: "Miguel Manzano Otero",      empresaId: 0, rol: "director"      },  // Director General
+  { id: 1,  nombre: "Eugenio Manzano Otero",     empresaId: 0, rol: "ceo"           },  // CEO
+  { id: 2,  nombre: "Jesús Salazar Otero",       empresaId: 0, rol: "trabajador"    },
+  { id: 3,  nombre: "Iratxe Plaza Castaño",      empresaId: 0, rol: "trabajador"    },
+  { id: 4,  nombre: "Yolanda Jiménez Núñez",     empresaId: 0, rol: "trabajador"    },
+  { id: 5,  nombre: "Laura Hernández Hoyos",     empresaId: 0, rol: "trabajador"    },
+  { id: 6,  nombre: "Rosa Garrido Marroquí",     empresaId: 0, rol: "trabajador"    },
+  { id: 7,  nombre: "Fernando Flores Manzano",   empresaId: 0, rol: "trabajador"    },
   // ── Energía de Miajadas ────────────────────────────────────────
-  { id: 8,  nombre: "Ángel Fernández Mogollón", email: "angelfernandez@lauraotero.com",  empresaId: 1, rol: "encargado"     },
-  { id: 9,  nombre: "Jose Manuel Fuentes Vicente", email: "jmfuentes@lauraotero.com",empresaId: 1, rol: "trabajador"   },
-  { id: 10, nombre: "María Manzano Soria", email: "mariamanzano@lauraotero.com",        empresaId: 1, rol: "trabajador"   },
+  { id: 8,  nombre: "Ángel Fernández Mogollón",  empresaId: 1, rol: "encargado"     },
+  { id: 9,  nombre: "Jose Manuel Fuentes Vicente",empresaId: 1, rol: "trabajador"   },
+  { id: 10, nombre: "María Manzano Soria",        empresaId: 1, rol: "trabajador"   },
   // ── Miajadas Telecom ───────────────────────────────────────────
-  { id: 11, nombre: "Valentín Pérez Sánchez", email: "valentinperez@lauraotero.com",    empresaId: 2, rol: "encargado"     },
-  { id: 12, nombre: "Esther Albalá Fabián", email: "ealbalaf@lauraotero.com",      empresaId: 2, rol: "encargado"     },
-  { id: 13, nombre: "Aitor Segador Garrido", email: "aitorsegador@lauraotero.com",     empresaId: 2, rol: "trabajador"    },
-  { id: 14, nombre: "Carlos Cintero Díaz", email: "carloscintero@lauraotero.com",       empresaId: 2, rol: "trabajador"    },
-  { id: 15, nombre: "Javier Acedo Iñigo", email: "javieracedo@lauraotero.com",        empresaId: 2, rol: "trabajador"    },
-  { id: 16, nombre: "Sara Márquez Pérez", email: "smarquez@lauraotero.com",        empresaId: 2, rol: "administrador" },
+  { id: 11, nombre: "Valentín Pérez Sánchez",    empresaId: 2, rol: "encargado"     },
+  { id: 12, nombre: "Esther Albalá Fabián",      empresaId: 2, rol: "encargado"     },
+  { id: 13, nombre: "Aitor Segador Garrido",     empresaId: 2, rol: "trabajador"    },
+  { id: 14, nombre: "Carlos Cintero Díaz",       empresaId: 2, rol: "trabajador"    },
+  { id: 15, nombre: "Javier Acedo Iñigo",        empresaId: 2, rol: "trabajador"    },
+  { id: 16, nombre: "Sara Márquez Pérez",        empresaId: 2, rol: "administrador" },
   // ── Laura Otero Instalaciones ──────────────────────────────────
-  { id: 17, nombre: "Miguel Calvo Calvo", email: "miguelcalvo@lauraotero.com",        empresaId: 3, rol: "encargado"     },
-  { id: 18, nombre: "Juan Antonio Fuentes Vicente", email: "jafuentes@lauraotero.com",empresaId: 3, rol: "trabajador"  },
-  { id: 19, nombre: "Jaime Naranjo Sanguino", email: "jaimenaranjo@lauraotero.com",    empresaId: 3, rol: "trabajador"    },
-  { id: 20, nombre: "Pepe Saavedra Pizarro", email: "joseluissaavedrapizarro@gmail.com",     empresaId: 3, rol: "trabajador"    },
-  { id: 21, nombre: "Ekaitz Pereira Grande", email: "ekaitzpg@gmail.com",     empresaId: 3, rol: "trabajador"    },
-  { id: 22, nombre: "Charly Llanos Lorenzo", email: "charlyllanos04@hotmail.com",     empresaId: 3, rol: "trabajador"    },
-  { id: 23, nombre: "Borja Llanos López", email: "borja_llanos26@hotmail.com",        empresaId: 3, rol: "trabajador"    },
-  { id: 24, nombre: "Oscar García Godino", email: "garciagodinooscar@gmail.com",       empresaId: 3, rol: "trabajador"    },
-  { id: 25, nombre: "Carlos Pablo Pajuelo", email: "carlospaju99@gmail.com",      empresaId: 3, rol: "trabajador"    },
-  { id: 26, nombre: "David López Babiano", email: "david.lopezbabiano@hotmail.com",       empresaId: 3, rol: "trabajador"    },
-  { id: 27, nombre: "Manuel Lobo Meneses", email: "manolobo1963@gmail.com",       empresaId: 3, rol: "trabajador"    },
-  { id: 28, nombre: "Luis Collado Pizarro", email: "uisete260790@hotmail.com",      empresaId: 3, rol: "trabajador"    },
-  { id: 29, nombre: "Félix Loro García", email: "felisucolg@gmail.com",         empresaId: 3, rol: "trabajador"    },
-  { id: 30, nombre: "Andrés Medina Nieto", email: "andresmedinanieto18@gmail.com",       empresaId: 3, rol: "trabajador"    },
-  { id: 31, nombre: "Jairo Miguel Masa", email: "jairomiguelmasa@gmail.com",         empresaId: 3, rol: "trabajador"    },
-  { id: 32, nombre: "Francisco Babiano Ruiz", email: "fbabiano@lauraotero.com",    empresaId: 3, rol: "trabajador"    },
-  { id: 33, nombre: "Antonio Díaz Álvarez", email: "antoniodiaza6@icloud.com",      empresaId: 3, rol: "trabajador"    },
-  { id: 34, nombre: "Guillermo Méndez Cortés", email: "guille.mendez.cortes@gmail.com",   empresaId: 3, rol: "trabajador"    },
+  { id: 17, nombre: "Miguel Calvo Calvo",        empresaId: 3, rol: "encargado"     },
+  { id: 18, nombre: "Juan Antonio Fuentes Vicente",empresaId: 3, rol: "trabajador"  },
+  { id: 19, nombre: "Jaime Naranjo Sanguino",    empresaId: 3, rol: "trabajador"    },
+  { id: 20, nombre: "Pepe Saavedra Pizarro",     empresaId: 3, rol: "trabajador"    },
+  { id: 21, nombre: "Ekaitz Pereira Grande",     empresaId: 3, rol: "trabajador"    },
+  { id: 22, nombre: "Charly Llanos Lorenzo",     empresaId: 3, rol: "trabajador"    },
+  { id: 23, nombre: "Borja Llanos López",        empresaId: 3, rol: "trabajador"    },
+  { id: 24, nombre: "Oscar García Godino",       empresaId: 3, rol: "trabajador"    },
+  { id: 25, nombre: "Carlos Pablo Pajuelo",      empresaId: 3, rol: "trabajador"    },
+  { id: 26, nombre: "David López Babiano",       empresaId: 3, rol: "trabajador"    },
+  { id: 27, nombre: "Manuel Lobo Meneses",       empresaId: 3, rol: "trabajador"    },
+  { id: 28, nombre: "Luis Collado Pizarro",      empresaId: 3, rol: "trabajador"    },
+  { id: 29, nombre: "Félix Loro García",         empresaId: 3, rol: "trabajador"    },
+  { id: 30, nombre: "Andrés Medina Nieto",       empresaId: 3, rol: "trabajador"    },
+  { id: 31, nombre: "Jairo Miguel Masa",         empresaId: 3, rol: "trabajador"    },
+  { id: 32, nombre: "Francisco Babiano Ruiz",    empresaId: 3, rol: "trabajador"    },
+  { id: 33, nombre: "Antonio Díaz Álvarez",      empresaId: 3, rol: "trabajador"    },
+  { id: 34, nombre: "Guillermo Méndez Cortés",   empresaId: 3, rol: "trabajador"    },
   // ── Zaqaru ────────────────────────────────────────────────────
-  { id: 35, nombre: "Riánsares Mañoso Blázquez", email: "rian@lauraotero.com", empresaId: 4, rol: "encargado"     },
-  { id: 36, nombre: "Alberto Masa Mayoral", email: "albertuxo9@gmail.com",      empresaId: 4, rol: "trabajador"    },
-  { id: 37, nombre: "Alberto Solís Loro", email: "albertosolisloro27@gmail.com",        empresaId: 4, rol: "trabajador"    },
-  { id: 38, nombre: "Antonio Vellarino Garrido", email: "antonio_vellarino@hotmail.com", empresaId: 4, rol: "trabajador"    },
-  { id: 39, nombre: "Francisco Sánchez Melero", email: "franciscosanchezmelero5@gmail.com",  empresaId: 4, rol: "trabajador"    },
-  { id: 40, nombre: "Jorge Martínez Orellana", email: "martinezorellanajorge5@gmail.com",   empresaId: 4, rol: "trabajador"    },
-  { id: 41, nombre: "Pedro Solís Bernardo", email: "psolisbernardo1968@gmail.com",      empresaId: 4, rol: "trabajador"    },
+  { id: 35, nombre: "Riánsares Mañoso Blázquez", empresaId: 4, rol: "encargado"     },
+  { id: 36, nombre: "Alberto Masa Mayoral",      empresaId: 4, rol: "trabajador"    },
+  { id: 37, nombre: "Alberto Solís Loro",        empresaId: 4, rol: "trabajador"    },
+  { id: 38, nombre: "Antonio Vellarino Garrido", empresaId: 4, rol: "trabajador"    },
+  { id: 39, nombre: "Francisco Sánchez Melero",  empresaId: 4, rol: "trabajador"    },
+  { id: 40, nombre: "Jorge Martínez Orellana",   empresaId: 4, rol: "trabajador"    },
+  { id: 41, nombre: "Pedro Solís Bernardo",      empresaId: 4, rol: "trabajador"    },
   // ── Laura Otero S.A. ──────────────────────────────────────────
-  { id: 42, nombre: "Jose Antonio Viegas Sánchez", email: "futuro61@hotmail.com",empresaId: 5, rol: "encargado"   },
-  { id: 43, nombre: "Vicente Manzano Otero", email: "vmanzano@lauraotero.com",     empresaId: 5, rol: "trabajador"    },
-  { id: 44, nombre: "Belén García Bravo", email: "belengarcia@lauraotero.com",        empresaId: 5, rol: "trabajador"    },
-  { id: 45, nombre: "Antonio Vellarino Maeso", email: "antoniovellarino@lauraotero.com",   empresaId: 5, rol: "trabajador"    },
-  { id: 46, nombre: "Daniel Pizarro Pizarro", email: "danielpizarro@lauraotero.com",    empresaId: 5, rol: "rrhh"          },
+  { id: 42, nombre: "Jose Antonio Viegas Sánchez",empresaId: 5, rol: "encargado"   },
+  { id: 43, nombre: "Vicente Manzano Otero",     empresaId: 5, rol: "trabajador"    },
+  { id: 44, nombre: "Belén García Bravo",        empresaId: 5, rol: "trabajador"    },
+  { id: 45, nombre: "Antonio Vellarino Maeso",   empresaId: 5, rol: "trabajador"    },
+  { id: 46, nombre: "Daniel Pizarro Pizarro",    empresaId: 5, rol: "rrhh"          },
 ];
 // Copia base de los usuarios del código (los 47 originales), para reconstruir
 // USUARIOS = base + usuarios nuevos (Firestore) sin perder identidad.
@@ -2917,7 +2917,7 @@ export default function App() {
     const pinsNuevos = {};
     Object.values(nuevosMap).forEach(nv => {
       if (!final.some(u => u.id === nv.id)) {
-        final.push({ id: nv.id, nombre: nv.nombre, empresaId: Number(nv.empresaId), rol: nv.rol || "trabajador", email: nv.email || "" });
+        final.push({ id: nv.id, nombre: nv.nombre, empresaId: Number(nv.empresaId), rol: nv.rol || "trabajador" });
         if (nv.pin) { PINS_DEFAULT[nv.id] = nv.pin; pinsNuevos[nv.id] = nv.pin; }
       }
     });
